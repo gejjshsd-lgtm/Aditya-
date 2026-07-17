@@ -12,220 +12,149 @@
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Poppins, sans-serif;
-        }
+        /* ===========================
+   RESPONSIVE DESIGN
+=========================== */
+
+html{
+    font-size:16px;
+}
+
+body{
+    min-height:100vh;
+    padding:20px;
+}
+
+.landing,
+.surprise{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.photo{
+    width:clamp(160px,28vw,260px);
+    height:clamp(160px,28vw,260px);
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.name{
+    font-size:clamp(1.8rem,5vw,3.2rem);
+    line-height:1.3;
+    margin-top:25px;
+}
+
+#message{
+    font-size:clamp(1rem,2.5vw,1.5rem);
+    line-height:1.8;
+    width:min(90%,750px);
+    margin:25px auto;
+}
+
+.landing h1{
+    font-size:clamp(4rem,12vw,8rem);
+}
+
+.landing h2{
+    font-size:clamp(1.6rem,5vw,2.6rem);
+}
+
+.landing p{
+    font-size:clamp(1rem,3vw,1.3rem);
+    width:min(90%,600px);
+    margin:20px auto 30px;
+}
+
+button{
+    font-size:clamp(1rem,2vw,1.2rem);
+    padding:16px 35px;
+}
+
+.footer{
+    font-size:clamp(.9rem,2vw,1.2rem);
+    margin-top:35px;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .landing,
+    .surprise{
+        padding:10px;
+    }
+
+    button{
+        width:220px;
+    }
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width:480px){
+
+    body{
+        padding:12px;
+    }
+
+    .photo{
+        width:170px;
+        height:170px;
+    }
+
+    button{
+        width:100%;
+        max-width:260px;
+        padding:15px;
+    }
 
-        body {
+    #message{
+        width:95%;
+        line-height:1.7;
+    }
 
-            height: 100vh;
+}
 
-            display: flex;
+/* ---------- Very Small Phones ---------- */
 
-            justify-content: center;
+@media (max-width:320px){
 
-            align-items: center;
+    .photo{
+        width:150px;
+        height:150px;
+    }
 
-            background: linear-gradient(-45deg, #ff0080, #7928ca, #00dbde, #fc00ff);
+    .landing h2{
+        font-size:1.4rem;
+    }
 
-            background-size: 400% 400%;
+}
 
-            animation: bg 12s infinite;
+/* ---------- Large Screens ---------- */
 
-            overflow: hidden;
+@media (min-width:1600px){
 
-            color: white;
+    html{
+        font-size:20px;
+    }
 
-            text-align: center;
+    .surprise,
+    .landing{
+        max-width:1100px;
+    }
 
-        }
-
-        @keyframes bg {
-
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-
-        }
-
-        .landing {
-
-            animation: fade 1s;
-
-        }
-
-        .landing h1 {
-
-            font-size: 120px;
-
-            animation: bounce 2s infinite;
-
-        }
-
-        .landing h2 {
-
-            font-size: 40px;
-
-            margin: 20px;
-
-        }
-
-        .landing p {
-
-            font-size: 20px;
-
-            margin-bottom: 30px;
-
-        }
-
-        button {
-
-            padding: 18px 40px;
-
-            font-size: 20px;
-
-            border: none;
-
-            border-radius: 40px;
-
-            background: white;
-
-            color: #ff0080;
-
-            cursor: pointer;
-
-            transition: .4s;
-
-            box-shadow: 0 0 30px white;
-
-        }
-
-        button:hover {
-
-            transform: scale(1.1);
-
-        }
-
-        .surprise {
-
-            display: none;
-
-            animation: fade 2s;
-
-        }
-
-        .photo {
-
-            width: 250px;
-
-            height: 250px;
-
-            margin: auto;
-
-            border-radius: 50%;
-
-            padding: 8px;
-
-            background: linear-gradient(45deg, #fff, #ffea00, #fff, #00f7ff);
-
-            animation: rotate 5s linear infinite;
-
-        }
-
-        .photo img {
-
-            width: 100%;
-
-            height: 100%;
-
-            border-radius: 50%;
-
-            object-fit: cover;
-
-        }
-
-        .name {
-
-            margin-top: 30px;
-
-            font-size: 45px;
-
-            text-shadow: 0 0 20px white;
-
-        }
-
-        #message {
-
-            font-size: 24px;
-
-            margin: 30px auto;
-
-            max-width: 700px;
-
-            line-height: 40px;
-
-        }
-
-        .footer {
-
-            margin-top: 40px;
-
-            font-size: 20px;
-
-            opacity: .8;
-
-        }
-
-        @keyframes rotate {
-
-            100% {
-
-                transform: rotate(360deg);
-
-            }
-
-        }
-
-        @keyframes bounce {
-
-            50% {
-
-                transform: translateY(-20px);
-
-            }
-
-        }
-
-        @keyframes fade {
-
-            from {
-
-                opacity: 0;
-
-                transform: scale(.8);
-
-            }
-
-            to {
-
-                opacity: 1;
-
-                transform: scale(1);
-
-            }
-
-        }
+}
     </style>
 </head>
 
