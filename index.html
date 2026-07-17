@@ -1,1 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Aditya ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins, sans-serif;
+        }
+
+        body {
+
+            height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background: linear-gradient(-45deg, #ff0080, #7928ca, #00dbde, #fc00ff);
+
+            background-size: 400% 400%;
+
+            animation: bg 12s infinite;
+
+            overflow: hidden;
+
+            color: white;
+
+            text-align: center;
+
+        }
+
+        @keyframes bg {
+
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+
+        }
+
+        .landing {
+
+            animation: fade 1s;
+
+        }
+
+        .landing h1 {
+
+            font-size: 120px;
+
+            animation: bounce 2s infinite;
+
+        }
+
+        .landing h2 {
+
+            font-size: 40px;
+
+            margin: 20px;
+
+        }
+
+        .landing p {
+
+            font-size: 20px;
+
+            margin-bottom: 30px;
+
+        }
+
+        button {
+
+            padding: 18px 40px;
+
+            font-size: 20px;
+
+            border: none;
+
+            border-radius: 40px;
+
+            background: white;
+
+            color: #ff0080;
+
+            cursor: pointer;
+
+            transition: .4s;
+
+            box-shadow: 0 0 30px white;
+
+        }
+
+        button:hover {
+
+            transform: scale(1.1);
+
+        }
+
+        .surprise {
+
+            display: none;
+
+            animation: fade 2s;
+
+        }
+
+        .photo {
+
+            width: 250px;
+
+            height: 250px;
+
+            margin: auto;
+
+            border-radius: 50%;
+
+            padding: 8px;
+
+            background: linear-gradient(45deg, #fff, #ffea00, #fff, #00f7ff);
+
+            animation: rotate 5s linear infinite;
+
+        }
+
+        .photo img {
+
+            width: 100%;
+
+            height: 100%;
+
+            border-radius: 50%;
+
+            object-fit: cover;
+
+        }
+
+        .name {
+
+            margin-top: 30px;
+
+            font-size: 45px;
+
+            text-shadow: 0 0 20px white;
+
+        }
+
+        #message {
+
+            font-size: 24px;
+
+            margin: 30px auto;
+
+            max-width: 700px;
+
+            line-height: 40px;
+
+        }
+
+        .footer {
+
+            margin-top: 40px;
+
+            font-size: 20px;
+
+            opacity: .8;
+
+        }
+
+        @keyframes rotate {
+
+            100% {
+
+                transform: rotate(360deg);
+
+            }
+
+        }
+
+        @keyframes bounce {
+
+            50% {
+
+                transform: translateY(-20px);
+
+            }
+
+        }
+
+        @keyframes fade {
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(.8);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="music" loop>
+        <source src="starostin-happy-birthday-357371.mp3" type="audio/mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="landing" id="landing">
+
+        <h1>🎁</h1>
+
+        <h2>A Special Surprise Is Waiting...</h2>
+
+        <p>Someone made something special just for you ❤️</p>
+
+        <button onclick="openGift()">
+            Open Surprise
+        </button>
+
+    </div>
+
+    <div class="surprise" id="surprise">
+
+        <div class="photo">
+
+            <img src="WhatsApp Image 2026-07-17 at 2.54.56 PM.jpeg" alt="Aditya's Photo">
+
+        </div>
+
+        <h1 class="name">
+            🎉 Happy Birthday Aditya 🎉
+        </h1>
+
+        <p id="message"></p>
+
+        <div class="footer">
+
+            Made with ❤️ by Gulshan & Shreya & Muskan & Aman
+
+        </div>
+
+    </div>
+
+    
+
+</body>
+<script>
+    const text = `Dear Aditya ❤️,
+
+Many many happy returns of the day!
+
+May your life always be filled with happiness, success, laughter and beautiful memories.
+
+Keep smiling...
+Keep shining...
+Keep being the amazing person you are.
+
+May all your dreams come true.
+
+Have an unforgettable birthday!
+
+🎂🎉🎈❤️`;
+
+    function openGift() {
+
+        document.getElementById("landing").style.display = "none";
+
+        document.getElementById("surprise").style.display = "block";
+
+        document.getElementById("music").play();
+
+        confetti({
+
+            particleCount: 300,
+
+            spread: 180,
+
+            origin: { y: 0.6 }
+
+        });
+
+        typeWriter();
+
+    }
+
+    let i = 0;
+
+    function typeWriter() {
+
+        if (i < text.length) {
+
+            document.getElementById("message").innerHTML += text.charAt(i);
+
+            i++;
+
+            setTimeout(typeWriter, 45);
+
+        }
+
+    }
+</script>
+
+</html>
