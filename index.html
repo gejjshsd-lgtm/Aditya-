@@ -12,95 +12,164 @@
 
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <style>
-        /* ===========================
-   RESPONSIVE DESIGN
-=========================== */
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
 html{
-    font-size:16px;
+    scroll-behavior:smooth;
 }
 
 body{
     min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     padding:20px;
+    overflow-x:hidden;
+
+    background:linear-gradient(-45deg,#ff0080,#7928ca,#00dbde,#fc00ff);
+    background-size:400% 400%;
+    animation:bg 12s ease infinite;
+
+    color:#fff;
+    text-align:center;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 .landing,
 .surprise{
     width:100%;
     max-width:900px;
-    margin:auto;
     padding:20px;
+    animation:fade 1s ease;
+}
+
+.landing h1{
+    font-size:clamp(70px,10vw,120px);
+    animation:bounce 2s infinite;
+}
+
+.landing h2{
+    font-size:clamp(28px,4vw,42px);
+    margin:20px 0;
+}
+
+.landing p{
+    font-size:clamp(16px,2vw,22px);
+    margin-bottom:30px;
+}
+
+button{
+    padding:16px 40px;
+    font-size:clamp(16px,2vw,20px);
+    border:none;
+    border-radius:50px;
+    background:#fff;
+    color:#ff0080;
+    cursor:pointer;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(255,255,255,.6);
+}
+
+button:hover{
+    transform:scale(1.08);
+}
+
+.surprise{
+    display:none;
 }
 
 .photo{
-    width:clamp(160px,28vw,260px);
-    height:clamp(160px,28vw,260px);
+    width:clamp(170px,30vw,260px);
+    height:clamp(170px,30vw,260px);
+    margin:auto;
+    padding:8px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#fff,#ffea00,#00f7ff,#fff);
+    animation:rotate 6s linear infinite;
 }
 
 .photo img{
     width:100%;
     height:100%;
     object-fit:cover;
+    border-radius:50%;
 }
 
 .name{
-    font-size:clamp(1.8rem,5vw,3.2rem);
-    line-height:1.3;
     margin-top:25px;
+    font-size:clamp(30px,5vw,48px);
+    text-shadow:0 0 20px white;
 }
 
 #message{
-    font-size:clamp(1rem,2.5vw,1.5rem);
+    margin:30px auto;
+    width:min(90%,700px);
+    font-size:clamp(16px,2vw,24px);
     line-height:1.8;
-    width:min(90%,750px);
-    margin:25px auto;
-}
-
-.landing h1{
-    font-size:clamp(4rem,12vw,8rem);
-}
-
-.landing h2{
-    font-size:clamp(1.6rem,5vw,2.6rem);
-}
-
-.landing p{
-    font-size:clamp(1rem,3vw,1.3rem);
-    width:min(90%,600px);
-    margin:20px auto 30px;
-}
-
-button{
-    font-size:clamp(1rem,2vw,1.2rem);
-    padding:16px 35px;
 }
 
 .footer{
-    font-size:clamp(.9rem,2vw,1.2rem);
-    margin-top:35px;
+    margin-top:30px;
+    font-size:clamp(14px,2vw,20px);
+    opacity:.8;
 }
 
-/* ---------- Tablet ---------- */
+/* Animations */
+
+@keyframes rotate{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes bounce{
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:scale(.9);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+/* Tablet */
 
 @media (max-width:768px){
 
     body{
         padding:15px;
+        align-items:flex-start;
     }
 
     .landing,
     .surprise{
-        padding:10px;
+        padding:15px;
+        margin-top:30px;
     }
 
     button{
         width:220px;
     }
-
 }
 
-/* ---------- Mobile ---------- */
+/* Mobile */
 
 @media (max-width:480px){
 
@@ -116,17 +185,14 @@ button{
     button{
         width:100%;
         max-width:260px;
-        padding:15px;
     }
 
     #message{
         width:95%;
-        line-height:1.7;
     }
-
 }
 
-/* ---------- Very Small Phones ---------- */
+/* Very Small Phones */
 
 @media (max-width:320px){
 
@@ -136,24 +202,23 @@ button{
     }
 
     .landing h2{
-        font-size:1.4rem;
+        font-size:24px;
     }
-
 }
 
-/* ---------- Large Screens ---------- */
+/* Large Screens */
 
-@media (min-width:1600px){
+@media (min-width:1400px){
 
-    html{
-        font-size:20px;
-    }
-
-    .surprise,
-    .landing{
+    .landing,
+    .surprise{
         max-width:1100px;
     }
 
+    .photo{
+        width:300px;
+        height:300px;
+    }
 }
     </style>
 </head>
